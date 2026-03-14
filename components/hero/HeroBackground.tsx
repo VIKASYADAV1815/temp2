@@ -1,16 +1,9 @@
 "use client";
-import { ConicalLamp } from "../ui/ConicalLamp";
-
 export default function HeroBackground() {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#020202] -z-10">
       
-      {/* 1. THE LAMP EFFECT (Replaces the orange blob) */}
-      <div className="absolute top-[-200px] left-0 right-0 flex justify-center z-0">
-         <ConicalLamp className="bg-transparent min-h-0 h-[800px] w-full" />
-      </div>
-
-      {/* 2. THE GRID (Low Opacity + Theme Side Fade) */}
+      {/* 1. THE GRID (Low Opacity + Theme Side Fade) */}
       <div 
         className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" 
         style={{

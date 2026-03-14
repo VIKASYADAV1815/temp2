@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import SparkleParticles from "./SparkleParticles";
 
 export default function HeroMockup() {
   const ref = useRef(null);
@@ -28,6 +29,11 @@ export default function HeroMockup() {
 
       {/* ATMOSPHERIC AMBER GLOW */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-orange-500/[0.03] blur-[150px] -z-10" />
+
+      {/* SPARKLE PARTICLES BEHIND MOCKUP */}
+      <div className="absolute inset-0 -z-5">
+        <SparkleParticles />
+      </div>
 
       <motion.div
         style={{ rotateX, scale }}
