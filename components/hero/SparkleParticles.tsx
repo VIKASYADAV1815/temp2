@@ -44,7 +44,7 @@ export default function SparkleParticles() {
             className="absolute rounded-full"
             style={{
               left: `${particle.x}%`,
-              bottom: "0px",
+              top: "0px", // Start exactly at the top border
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               backgroundColor: particle.id % 3 === 0 ? "#F97316" : "#FFFFFF", // Orange & White
@@ -52,7 +52,7 @@ export default function SparkleParticles() {
               opacity: 0.8,
             }}
             animate={{
-              y: [0, -30, -60],
+              y: [0, -30, -60], // Move UPWARDS from top (negative Y)
               x: [0, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 20],
               opacity: [0, 0.8, 0],
               scale: [0, 1, 0],

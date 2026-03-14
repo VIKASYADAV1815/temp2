@@ -28,7 +28,7 @@ const LogoCloud = () => {
         }}
       >
         <motion.div 
-          className="flex gap-20 items-center whitespace-nowrap" 
+          className="flex gap-12 sm:gap-20 items-center whitespace-nowrap" 
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
             duration: 35, 
@@ -39,7 +39,7 @@ const LogoCloud = () => {
           {[...logos, ...logos].map((logo, index) => (
             <div 
               key={index} 
-              className="group flex flex-col items-center justify-center min-w-[180px]"
+              className="group flex flex-col items-center justify-center min-w-[140px] sm:min-w-[180px]"
             >
               <div className="relative flex flex-col items-center">
                 {/* THE LOGO - Scaled for small devices */}
