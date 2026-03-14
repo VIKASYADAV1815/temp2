@@ -34,8 +34,8 @@ export default function SparkleParticles() {
       <div 
         className="absolute inset-0"
         style={{
-          maskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 70%)',
-          WebkitMaskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 70%)'
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
         }}
       >
         {particles.map((particle) => (
@@ -44,22 +44,24 @@ export default function SparkleParticles() {
             className="absolute rounded-full"
             style={{
               left: `${particle.x}%`,
-              top: `${particle.y}%`,
+              bottom: "0px",
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               backgroundColor: particle.id % 3 === 0 ? "#F97316" : "#FFFFFF", // Orange & White
-              opacity: 0.6,
+              boxShadow: "0 0 4px rgba(255,255,255,0.4)",
+              opacity: 0.8,
             }}
             animate={{
-              y: [0, -20, -40],
-              opacity: [0, 0.6, 0],
+              y: [0, -30, -60],
+              x: [0, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 20],
+              opacity: [0, 0.8, 0],
               scale: [0, 1, 0],
             }}
             transition={{
               duration: particle.duration,
               repeat: Infinity,
               delay: particle.delay,
-              ease: "easeInOut",
+              ease: "easeOut",
             }}
           />
         ))}

@@ -27,7 +27,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-4xl sm:text-5xl md:text-[60px] font-bold tracking-tight text-white mb-6 leading-[1.1] text-center"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-bold tracking-tight text-white mb-4 sm:mb-6 leading-[1.1] text-center px-2 sm:px-0"
         >
           Unleash the power of <br />
           <span className="heading-gradient">intuitive finance</span>
@@ -38,7 +38,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-base sm:text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed text-center"
+          className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mb-8 sm:mb-10 leading-relaxed text-center px-4"
         >
           Say goodbye to outdated tools. Manage your business growth with 
           AI-driven insights that make finance <span className="text-white">simple and intuitive.</span>
@@ -52,7 +52,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="w-full max-w-7xl mt-16 px-4 sm:px-6"
+        className="w-full max-w-7xl mt-12 sm:mt-16 px-2 sm:px-6"
       >
         <HeroMockup />
       </motion.div>

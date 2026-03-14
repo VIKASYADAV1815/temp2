@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 export default function HeroCTA() {
   return (
     <motion.div 
-      className="flex flex-row items-center gap-5 mt-12"
+      className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 mt-8 sm:mt-12 w-full sm:w-auto"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.8 }}
     >
       {/* --- THE AMBER GLOW BUTTON --- */}
-      <button className="group relative px-7 py-2.5 rounded-full transition-all duration-500 overflow-hidden">
+      <button className="group relative px-6 py-3 sm:px-7 sm:py-2.5 rounded-full transition-all duration-500 overflow-hidden w-full sm:w-auto flex justify-center">
         {/* 1. Deep Glow Shadow (Moves with hover) */}
         <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
@@ -33,7 +33,7 @@ export default function HeroCTA() {
       </button>
 
       {/* --- THE GHOST OBSIDIAN BUTTON --- */}
-      <button className="group relative px-7 py-2.5 rounded-full transition-all duration-500">
+      <button className="group relative px-6 py-3 sm:px-7 sm:py-2.5 rounded-full transition-all duration-500 w-full sm:w-auto flex justify-center">
         {/* Ultra-Thin Border */}
         <div className="absolute inset-0 rounded-full border border-white/[0.08] group-hover:border-white/20 transition-colors" />
         

@@ -64,14 +64,14 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {plans.map((plan, i) => (
             <div 
               key={i} 
-              className={`relative group p-8 rounded-3xl border transition-all duration-300 ${plan.highlight ? 'bg-white/[0.03] border-orange-500/30 hover:border-orange-500/50' : 'bg-transparent border-white/5 hover:border-white/10'}`}
+              className={`relative group p-6 sm:p-8 rounded-3xl border transition-all duration-300 ${plan.highlight ? 'bg-white/[0.03] border-orange-500/30 hover:border-orange-500/50' : 'bg-transparent border-white/5 hover:border-white/10'}`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-8 bg-gradient-to-r from-orange-500 to-amber-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-orange-500/20">
+                <div className="absolute -top-3 left-6 sm:left-8 bg-gradient-to-r from-orange-500 to-amber-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-orange-500/20">
                   Most Popular
                 </div>
               )}

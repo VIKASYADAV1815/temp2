@@ -31,7 +31,7 @@ export default function HeroMockup() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-orange-500/[0.03] blur-[150px] -z-10" />
 
       {/* SPARKLE PARTICLES BEHIND MOCKUP */}
-      <div className="absolute inset-0 -z-5">
+      <div className="absolute inset-x-0 -top-20 h-[150px] z-30 pointer-events-none">
         <SparkleParticles />
       </div>
 

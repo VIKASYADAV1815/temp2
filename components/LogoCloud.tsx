@@ -42,11 +42,11 @@ const LogoCloud = () => {
               className="group flex flex-col items-center justify-center min-w-[180px]"
             >
               <div className="relative flex flex-col items-center">
-                {/* THE LOGO - Increased from h-7 to h-10 */}
+                {/* THE LOGO - Scaled for small devices */}
                 <img 
                   src={logo.url} 
                   alt={logo.name} 
-                  className="h-10 w-auto opacity-30 group-hover:opacity-100 transition-all duration-700 grayscale group-hover:grayscale-0 relative z-10 brightness-125"
+                  className="h-6 sm:h-8 md:h-10 w-auto opacity-30 group-hover:opacity-100 transition-all duration-700 grayscale group-hover:grayscale-0 relative z-10 brightness-125"
                 />
 
                 {/* THE REALISTIC REFLECTION */}
@@ -55,7 +55,7 @@ const LogoCloud = () => {
                   <img 
                     src={logo.url} 
                     alt="" 
-                    className="h-10 w-auto scale-y-[-1] opacity-[0.08] blur-[2px] grayscale transition-opacity duration-700 group-hover:opacity-[0.15]"
+                    className="h-6 sm:h-8 md:h-10 w-auto scale-y-[-1] opacity-[0.08] blur-[2px] grayscale transition-opacity duration-700 group-hover:opacity-[0.15]"
                     style={{
                       maskImage: 'linear-gradient(to bottom, black 0%, transparent 80%)',
                       WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 80%)'
