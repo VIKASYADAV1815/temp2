@@ -13,20 +13,20 @@ const logos = [
 
 const LogoCloud = () => {
   return (
-    <div className="relative w-full py-20 overflow-hidden bg-[#020202]">
+    <div className="relative w-full py-12 overflow-hidden bg-black">
       
-      <div className="max-w-7xl mx-auto px-4 text-center mb-8">
+      <div className="max-w-7xl mx-auto px-4 text-center mb-6">
         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.4em] opacity-50">
           Trusted by the best
         </p>
       </div>
       
-      <div className="relative flex items-center">
-        {/* --- AGGRESSIVE SIDE MASKING --- */}
-        {/* Reduced width to 20% for a better fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-[20%] bg-gradient-to-r from-[#020202] via-[#020202]/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-[20%] bg-gradient-to-l from-[#020202] via-[#020202]/80 to-transparent z-20 pointer-events-none" />
-        
+      <div className="relative flex items-center"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)'
+        }}
+      >
         <motion.div 
           className="flex gap-20 items-center whitespace-nowrap" 
           animate={{ x: ["0%", "-50%"] }}

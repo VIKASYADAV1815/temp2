@@ -16,14 +16,14 @@ export default function SparkleParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const particleCount = 40; // Quality over quantity
+    const particleCount = 50; // Increased count
     const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 1.2 + 0.3, // Microscopic
-      duration: Math.random() * 10 + 20, 
-      delay: Math.random() * -20,
+      size: Math.random() * 2 + 0.5, // Slightly larger for "sharp" look
+      duration: Math.random() * 5 + 5, // Faster animation
+      delay: Math.random() * -10,
     }));
     setParticles(newParticles);
   }, []);
@@ -32,35 +32,33 @@ export default function SparkleParticles() {
     <div 
       className="absolute inset-0 overflow-hidden pointer-events-none z-10"
       style={{
-        // IMPORTANT: Mask ensures particles only "exist" where the light is
-        maskImage: 'radial-gradient(circle at 50% 30%, black 0%, transparent 70%)',
-        WebkitMaskImage: 'radial-gradient(circle at 50% 30%, black 0%, transparent 70%)'
+        maskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 80%)',
+        WebkitMaskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 80%)'
       }}
     >
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-white"
+          className="absolute rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: `${particle.size}px`,
             height: `${particle.size}px`,
-            backgroundColor: particle.id % 3 === 0 ? "#FFD1A9" : "#FFFFFF",
+            // Sharp orangish colors: Orange-500, Amber-400, and White highlights
+            backgroundColor: particle.id % 3 === 0 ? "#F97316" : particle.id % 3 === 1 ? "#FBBF24" : "#FFFFFF",
+            boxShadow: particle.id % 3 === 0 ? "0 0 4px #F97316" : "none", // Glow for orange particles
           }}
           animate={{
-            // 1. Erratic "Brownian" Movement (X and Y vibrate randomly)
-            x: [0, (Math.random() - 0.5) * 30, (Math.random() - 0.5) * 60],
-            y: [0, -40, -80],
-            // 2. Glinting (Simulates the particle spinning and catching light)
-            opacity: [0, 0, 0.8, 0.2, 0.9, 0, 0],
-            scale: [0, 1, 0.5, 1.2, 0],
+            y: [0, -30, -60],
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
           }}
           transition={{
             duration: particle.duration,
             repeat: Infinity,
             delay: particle.delay,
-            ease: "easeInOut",
+            ease: "easeOut",
           }}
         />
       ))}

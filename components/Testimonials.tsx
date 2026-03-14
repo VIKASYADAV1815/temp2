@@ -21,11 +21,12 @@ export default function Testimonials() {
         <p className="text-white/40">Join thousands of companies scaling with Cobalt.</p>
       </div>
 
-      <div className="relative flex flex-col gap-6">
-        {/* Gradient Masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none" />
-
+      <div className="relative flex flex-col gap-6"
+           style={{
+             maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+             WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+           }}
+      >
         {/* Row 1: Left to Right */}
         <div className="flex overflow-hidden">
           <motion.div 
@@ -34,9 +35,12 @@ export default function Testimonials() {
             transition={{ duration: 40, ease: "linear", repeat: Infinity }}
           >
             {[...testimonials, ...testimonials].map((item, i) => (
-              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10 group">
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-white transition-colors">"{item.text}"</p>
-                <div className="flex items-center gap-3">
+              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10 group backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] pointer-events-none" />
+                
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-white transition-colors relative z-10">"{item.text}"</p>
+                <div className="flex items-center gap-3 relative z-10">
                   <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 group-hover:border-orange-500/50 transition-colors">
                     <img src={item.avatar} alt={item.author} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                   </div>
@@ -58,9 +62,12 @@ export default function Testimonials() {
             transition={{ duration: 40, ease: "linear", repeat: Infinity }}
           >
             {[...testimonials, ...testimonials].map((item, i) => (
-              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10 group">
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-white transition-colors">"{item.text}"</p>
-                <div className="flex items-center gap-3">
+              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10 group backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] pointer-events-none" />
+                
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-white transition-colors relative z-10">"{item.text}"</p>
+                <div className="flex items-center gap-3 relative z-10">
                   <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 group-hover:border-orange-500/50 transition-colors">
                     <img src={item.avatar} alt={item.author} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                   </div>
