@@ -25,7 +25,7 @@ export const ConicalLamp = ({ className }: { className?: string }) => {
           style={{
             backgroundImage: `conic-gradient(from 180deg at 50% -20%, transparent 120deg, rgba(249, 115, 22, 0.4) 180deg, transparent 240deg)`,
           }}
-          className="absolute top-0 h-full w-[60rem] bg-gradient-conic"
+          className="absolute top-0 h-full w-full max-w-[60rem] bg-gradient-conic"
         >
           {/* Bottom fade mask to ensure it blends into the background */}
           <div className="absolute inset-0 bg-black [mask-image:linear-gradient(to_top,white,transparent)]" />

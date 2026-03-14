@@ -13,11 +13,11 @@ export default function Features() {
       {/* Background Texture */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* HEADER AREA */}
-        <div className="mb-20 max-w-3xl">
-          <div className="flex items-center gap-2 mb-4">
+        <div className="mb-20 max-w-3xl mx-auto md:mx-0 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
             <div className="h-1 w-1 rounded-full bg-orange-500" />
             <p className="text-orange-500 font-bold tracking-[0.2em] text-xs uppercase">
               Capabilities
@@ -27,7 +27,7 @@ export default function Features() {
             Everything you need. <br />
             <span className="text-white/20">Nothing you don't.</span>
           </h2>
-          <p className="text-lg text-white/40 leading-relaxed max-w-xl">
+          <p className="text-lg text-white/40 leading-relaxed max-w-xl mx-auto md:mx-0">
             Financial management and visibility in one place. Experience a flexible toolkit that makes every task feel like a breeze.
           </p>
         </div>
