@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import SparkleParticles from "./SparkleParticles";
 
 export default function HeroMockup() {
   const ref = useRef(null);
@@ -34,11 +33,6 @@ export default function HeroMockup() {
         style={{ rotateX, scale }}
         className="relative z-10 w-full rounded-xl border border-white/10 bg-black shadow-[0_40px_100px_rgba(0,0,0,0.9)] overflow-hidden"
       >
-        {/* SPARKLE DUST OVERLAY - Positioned on the top border inside the mockup */}
-        <div className="absolute inset-x-0 top-0 h-[100px] z-30 pointer-events-none">
-          <SparkleParticles />
-        </div>
-
         {/* TOP SPECULAR HIGHLIGHT */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-20" />
 

@@ -1,5 +1,4 @@
 "use client";
-import SparkleParticles from "./SparkleParticles";
 import { ConicalLamp } from "../ui/ConicalLamp";
 
 export default function HeroBackground() {
@@ -24,12 +23,6 @@ export default function HeroBackground() {
       {/* 3. SIDE THEME MASKING (The "Orange Mist" on sides) */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none" />
 
-      {/* 4. DUST PARTICLES (Positioned for Mockup focus) */}
-      {/* We wrap them in a container that sits exactly where the mockup usually is */}
-      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] z-20 pointer-events-none">
-        <SparkleParticles count={40} minSize={1} maxSize={2} opacity={0.2} />
-      </div>
-      
       {/* 5. THE BOTTOM MERGE */}
       <div className="absolute bottom-0 left-0 right-0 h-[300px] bg-gradient-to-t from-[#020202] via-[#020202]/80 to-transparent z-30" />
       
