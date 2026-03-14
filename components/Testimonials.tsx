@@ -34,14 +34,14 @@ export default function Testimonials() {
             transition={{ duration: 40, ease: "linear", repeat: Infinity }}
           >
             {[...testimonials, ...testimonials].map((item, i) => (
-              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10">
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed">"{item.text}"</p>
+              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10 group">
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-white transition-colors">"{item.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
-                    <img src={item.avatar} alt={item.author} className="w-full h-full object-cover" />
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 group-hover:border-orange-500/50 transition-colors">
+                    <img src={item.avatar} alt={item.author} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                   </div>
                   <div>
-                    <div className="text-white text-sm font-medium">{item.author}</div>
+                    <div className="text-white text-sm font-medium group-hover:text-orange-400 transition-colors">{item.author}</div>
                     <div className="text-white/40 text-xs">{item.role}</div>
                   </div>
                 </div>
@@ -58,14 +58,14 @@ export default function Testimonials() {
             transition={{ duration: 40, ease: "linear", repeat: Infinity }}
           >
             {[...testimonials, ...testimonials].map((item, i) => (
-              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10">
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed">"{item.text}"</p>
+              <div key={i} className="w-[350px] flex-shrink-0 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/10 group">
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-white transition-colors">"{item.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
-                    <img src={item.avatar} alt={item.author} className="w-full h-full object-cover" />
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 group-hover:border-orange-500/50 transition-colors">
+                    <img src={item.avatar} alt={item.author} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                   </div>
                   <div>
-                    <div className="text-white text-sm font-medium">{item.author}</div>
+                    <div className="text-white text-sm font-medium group-hover:text-orange-400 transition-colors">{item.author}</div>
                     <div className="text-white/40 text-xs">{item.role}</div>
                   </div>
                 </div>
