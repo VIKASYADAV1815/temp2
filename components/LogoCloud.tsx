@@ -13,7 +13,7 @@ const logos = [
 
 const LogoCloud = () => {
   return (
-    <div className="relative w-full py-12 overflow-hidden bg-black">
+    <div className="relative w-full py-12 overflow-hidden bg-[#020202]">
       
       <div className="max-w-7xl mx-auto px-4 text-center mb-6">
         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.4em] opacity-50">

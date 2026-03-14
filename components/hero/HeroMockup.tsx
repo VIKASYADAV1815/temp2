@@ -30,15 +30,15 @@ export default function HeroMockup() {
       {/* ATMOSPHERIC AMBER GLOW */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-orange-500/[0.03] blur-[150px] -z-10" />
 
-      {/* SPARKLE DUST OVERLAY - Positioned above the mockup */}
-      <div className="absolute inset-x-0 -top-20 h-[400px] z-30 pointer-events-none">
-        <SparkleParticles />
-      </div>
-
       <motion.div
         style={{ rotateX, scale }}
         className="relative z-10 w-full rounded-xl border border-white/10 bg-black shadow-[0_40px_100px_rgba(0,0,0,0.9)] overflow-hidden"
       >
+        {/* SPARKLE DUST OVERLAY - Positioned on the top border inside the mockup */}
+        <div className="absolute inset-x-0 top-0 h-[100px] z-30 pointer-events-none">
+          <SparkleParticles />
+        </div>
+
         {/* TOP SPECULAR HIGHLIGHT */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-20" />
 
