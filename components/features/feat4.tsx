@@ -1,177 +1,211 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Slack, Figma, Database, Cloud, Globe, Cpu, Zap, Radio } from "lucide-react";
+import { 
+  Zap, 
+  Wallet, 
+  ArrowUpRight,
+  ShieldCheck,
+  TrendingUp,
+  Activity,
+  CreditCard,
+  MoreHorizontal
+} from "lucide-react";
 import { useState } from "react";
+
+const CARDS = [
+  {
+    id: 1,
+    title: "Primary Account",
+    subtitle: "Ending in •••• 4289",
+    amount: "$24,500.00",
+    change: "+12.5%",
+    icon: Zap,
+    color: "#fff",
+    bg: "linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)",
+    border: "border-white/10",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=faces",
+    chart: [40, 35, 55, 45, 60, 75, 65]
+  },
+  {
+    id: 2,
+    title: "Venture Fund",
+    subtitle: "Series A Allocation",
+    amount: "$128,420.50",
+    change: "+4.2%",
+    icon: ShieldCheck,
+    color: "#10b981",
+    bg: "linear-gradient(135deg, #052e16 0%, #022c22 100%)",
+    border: "border-emerald-500/20",
+    avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=80&h=80&fit=crop&crop=faces",
+    chart: [30, 45, 40, 50, 45, 55, 60]
+  },
+  {
+    id: 3,
+    title: "Crypto Assets",
+    subtitle: "ETH / SOL / BTC",
+    amount: "$8,240.25",
+    change: "+8.1%",
+    icon: TrendingUp,
+    color: "#3b82f6",
+    bg: "linear-gradient(135deg, #172554 0%, #0f172a 100%)",
+    border: "border-blue-500/20",
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop&crop=faces",
+    chart: [20, 25, 35, 30, 45, 40, 55]
+  }
+];
+
+const Sparkline = ({ data, color }: { data: number[], color: string }) => {
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const range = max - min;
+  const points = data.map((d, i) => {
+    const x = (i / (data.length - 1)) * 100;
+    const y = 100 - ((d - min) / range) * 100;
+    return `${x},${y}`;
+  }).join(' ');
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible preserve-3d">
+      <motion.path
+        d={`M ${points}`}
+        fill="none"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.5 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
+      {/* Glow Effect */}
+      <motion.path
+        d={`M ${points}`}
+        fill="none"
+        stroke={color}
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md opacity-20"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
+    </svg>
+  );
+};
 
 export default function NexusPremium() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
-  const icons = [
-    { Icon: Github, label: "GitHub", color: "#ffffff", glow: "rgba(255,255,255,0.2)" },
-    { Icon: Slack, label: "Slack", color: "#E01E5A", glow: "rgba(224,30,90,0.3)" },
-    { Icon: Figma, label: "Figma", color: "#A259FF", glow: "rgba(162,89,255,0.3)" },
-    { Icon: Database, label: "#336791", color: "#336791", glow: "rgba(51,103,145,0.3)" },
-    { Icon: Cloud, label: "AWS", color: "#10b981", glow: "rgba(16,185,129,0.3)" },
-  ];
 
   return (
-    <div className="group relative w-full h-full bg-[#030303] border border-white/[0.08] rounded-[2rem] overflow-hidden flex flex-col p-8 transition-all duration-700 hover:border-white/20 shadow-[0_0_50px_-12px_rgba(0,0,0,1)]">
+    <div className="group relative w-full h-full bg-[#050505] border border-white/[0.08] rounded-[2.5rem] overflow-hidden flex flex-col pt-8 px-8 transition-all duration-700 hover:border-white/20 hover:shadow-[0_0_80px_-20px_rgba(255,255,255,0.05)]">
       
-      {/* 1. ARCHITECTURAL BACKGROUND */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.03),transparent_70%)]" />
-      <div className="absolute inset-0 opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent)]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
-      </div>
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,255,255,0.02),transparent_70%)]" />
 
-      {/* 2. TOP TECHNICAL DATA */}
-      <div className="relative z-20 flex justify-between items-start">
-        <div className="flex gap-4">
-          <div className="flex flex-col gap-1">
-            <span className="text-[7px] font-black text-white/20 uppercase tracking-[0.4em]">Core Interface</span>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-white/10 overflow-hidden relative">
-                <motion.div 
-                   animate={{ y: [-10, 10] }} 
-                   transition={{ duration: 2, repeat: Infinity }} 
-                   className="absolute inset-0 bg-white" 
-                />
-              </div>
-              <span className="text-[10px] font-mono text-white/40 tracking-widest">NX-749</span>
-            </div>
-          </div>
+      {/* Header */}
+      <div className="relative z-20 flex justify-between items-start mb-6">
+        <div className="space-y-1">
+          <h3 className="text-xl font-medium text-white tracking-tight">Active <span className="text-white/30">Vaults</span></h3>
+          <p className="text-xs text-white/40 font-light max-w-[150px]">
+            Real-time asset allocation across decentralized networks.
+          </p>
         </div>
-        <Radio size={14} className="text-white/10 group-hover:text-white/40 transition-colors animate-pulse" />
+        <div className="w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center">
+           <Activity size={14} className="text-white/40" />
+        </div>
       </div>
 
-      {/* 3. THE RE-ENGINEERED HUB */}
-      <div className="flex-1 flex items-center justify-center relative z-10 min-h-[240px]">
-        
-        {/* Deep Field Orbits */}
-        <div className="absolute w-[200px] h-[200px] rounded-full border border-white/[0.02] bg-white/[0.01]" />
-        <div className="absolute w-[280px] h-[280px] rounded-full border border-white/[0.01]" />
-
-        {/* Central Logo: The "Jewel" */}
-        <motion.div 
-          whileHover={{ scale: 1.05, rotate: 5 }}
-          className="relative z-30 w-20 h-20 flex items-center justify-center cursor-none"
-        >
-          {/* Layered Glass Effects */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-[1.5rem] blur-[2px]" />
-          <div className="absolute inset-0 bg-[#0A0A0A] rounded-[1.5rem] border border-white/10 shadow-inner" />
-          <div className="absolute inset-[1px] bg-gradient-to-br from-white/[0.08] to-transparent rounded-[1.4rem]" />
-          
-          <Globe className="text-white relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" size={32} strokeWidth={1.5} />
-          
-          {/* Animated Internal Scanning Light */}
-          <motion.div 
-            animate={{ left: ['-100%', '200%'] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 w-8 h-full bg-white/5 skew-x-12 blur-md"
-          />
-        </motion.div>
-
-        {/* Orbiting Icons: "Glass Nodes" */}
-        {icons.map((item, i) => {
-          const angle = (i * 360) / icons.length;
-          const radius = 105;
-          const x = Math.cos((angle * Math.PI) / 180) * radius;
-          const y = Math.sin((angle * Math.PI) / 180) * radius;
-
-          return (
-            <motion.div
-              key={i}
-              onMouseEnter={() => setHoveredIndex(i)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="absolute z-20"
-              initial={{ x: 0, y: 0, opacity: 0 }}
-              animate={{ x, y, opacity: 1 }}
-              whileHover={{ scale: 1.1, zIndex: 40 }}
-              transition={{ delay: i * 0.1, type: "spring", stiffness: 80 }}
-            >
-              {/* Node Container */}
-              <div className={`relative w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 overflow-hidden
-                ${hoveredIndex === i ? 'bg-white/10 border-white/30' : 'bg-white/[0.03] border-white/5'} 
-                border backdrop-blur-xl shadow-2xl`}
-              >
-                {/* Individual Icon Glow */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500"
-                  style={{ backgroundColor: item.color }}
-                />
-                <item.Icon 
-                  style={{ color: hoveredIndex === i ? item.color : 'rgba(255,255,255,0.4)' }} 
-                  size={20} 
-                  strokeWidth={1.5}
-                  className="relative z-10 transition-colors duration-300"
-                />
-              </div>
-
-              {/* Data Path to Hub */}
-              <svg className="absolute inset-0 w-[200px] h-[200px] -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10 overflow-visible">
-                <motion.path
-                  d={`M 100 100 L ${100 - x} ${100 - y}`}
-                  stroke="url(#pathGradient)"
-                  strokeWidth="1"
-                  strokeDasharray="4 4"
-                  fill="none"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ 
-                    pathLength: 1, 
-                    opacity: hoveredIndex === i ? 0.4 : 0.05,
-                  }}
-                />
-                <defs>
-                  <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="white" stopOpacity="0" />
-                    <stop offset="100%" stopColor={item.color} />
-                  </linearGradient>
-                </defs>
-              </svg>
-
-              <AnimatePresence>
-                {hoveredIndex === i && (
+      {/* Stacked Cards Container */}
+      <div className="flex-1 relative w-full perspective-[1200px] flex justify-center">
+         <div className="relative w-full flex flex-col items-center mt-4">
+            {CARDS.map((card, idx) => {
+               const isHovered = hoveredIndex === idx;
+               const offset = idx * 45; // Vertical spacing
+               
+               return (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9, x: 20 }}
-                    animate={{ opacity: 1, scale: 1, x: 55 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    className="absolute top-1/2 -translate-y-1/2 left-0 pl-2 pointer-events-none"
+                     key={card.id}
+                     onMouseEnter={() => setHoveredIndex(idx)}
+                     onMouseLeave={() => setHoveredIndex(null)}
+                     initial={{ y: offset, scale: 1 - idx * 0.04, zIndex: CARDS.length - idx }}
+                     animate={{ 
+                        y: isHovered ? offset - 30 : offset,
+                        scale: isHovered ? 1.05 : 1 - idx * 0.04,
+                        zIndex: isHovered ? 50 : CARDS.length - idx,
+                        rotateX: isHovered ? 0 : -2,
+                        filter: hoveredIndex !== null && hoveredIndex !== idx ? "blur(4px) brightness(0.5) grayscale(0.5)" : "none"
+                     }}
+                     transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                     className="absolute w-full max-w-[280px] h-[180px] origin-top transition-all duration-500"
+                     style={{ top: 0 }}
                   >
-                    <div className="bg-white px-2 py-0.5 rounded-sm shadow-xl">
-                      <span className="text-[9px] font-black text-black uppercase tracking-tighter italic">
-                        {item.label}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          );
-        })}
-      </div>
+                     {/* Premium Glass Card */}
+                     <div 
+                        className={`relative w-full h-full p-5 rounded-3xl border ${card.border} shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8)] overflow-hidden group/card`}
+                        style={{ background: card.bg }}
+                     >
+                        {/* Noise Texture */}
+                        <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                        
+                        {/* Inner Highlight */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
 
-      {/* 4. FOOTER: High-Contrast Minimalist */}
-      <div className="relative z-20 mt-auto pt-6 border-t border-white/[0.05]">
-        <div className="flex justify-between items-end">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <div className="h-1 w-1 bg-white animate-pulse rounded-full" />
-              <p className="text-[10px] font-bold text-white tracking-[0.2em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">
-                Synapse v2.4
-              </p>
-            </div>
-            <h3 className="text-2xl font-light text-white tracking-tighter leading-none">
-              Nexus <span className="text-white/20">Protocol</span>
-            </h3>
-          </div>
-          <div className="flex flex-col items-end gap-2">
-             <div className="flex gap-1">
-                {[1,2,3,4].map(i => <div key={i} className="w-2 h-[2px] bg-white/10" />)}
-             </div>
-             <p className="text-[8px] font-mono text-white/20 tracking-widest uppercase">Encryption: AES-256</p>
-          </div>
-        </div>
+                        <div className="relative z-10 flex flex-col h-full justify-between">
+                           
+                           {/* Card Header */}
+                           <div className="flex justify-between items-start">
+                              <div className="flex items-center gap-3">
+                                 <div className="w-8 h-8 rounded-full overflow-hidden border border-white/10 ring-2 ring-black/20">
+                                    <img src={card.avatar} alt="avatar" className="w-full h-full object-cover" />
+                                 </div>
+                                 <div>
+                                    <h4 className="text-sm font-medium text-white tracking-tight">{card.title}</h4>
+                                    <p className="text-[10px] text-white/40 font-mono tracking-wide">{card.subtitle}</p>
+                                 </div>
+                              </div>
+                              <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                                 <CreditCard size={12} className="text-white/40" />
+                              </div>
+                           </div>
+
+                           {/* Card Body (Chart + Amount) */}
+                           <div className="flex items-end justify-between mt-auto">
+                              <div className="space-y-1">
+                                 <p className="text-xl font-medium text-white tracking-tight">{card.amount}</p>
+                                 <div className="flex items-center gap-1.5">
+                                    <span className="text-[10px] font-bold" style={{ color: card.color }}>{card.change}</span>
+                                    <span className="text-[9px] text-white/20">this month</span>
+                                 </div>
+                              </div>
+                              
+                              {/* Sparkline Chart */}
+                              <div className="w-16 h-8">
+                                 <Sparkline data={card.chart} color={card.color} />
+                              </div>
+                           </div>
+
+                           {/* Hover Action (Reveal) */}
+                           <motion.div 
+                              initial={{ opacity: 0, x: 10 }}
+                              animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 10 }}
+                              className="absolute top-5 right-5"
+                           >
+                              <MoreHorizontal size={16} className="text-white/60" />
+                           </motion.div>
+
+                        </div>
+                     </div>
+                  </motion.div>
+               );
+            })}
+         </div>
       </div>
+      
+      {/* Bottom Fade Mask */}
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent z-40 pointer-events-none" />
+
     </div>
   );
 }
