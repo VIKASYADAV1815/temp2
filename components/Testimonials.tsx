@@ -11,7 +11,7 @@ const testimonials = [
   { text: "The reconciliation engine alone saved us 40+ hours a month. Truly indispensable.", author: "Jessica Lee", role: "Nova Finance", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100" },
 ];
 
-const BladeCard = ({ item }) => {
+const BladeCard = ({ item }: { item: any }) => {
   return (
     <div className="relative w-[440px] h-[140px] group flex-shrink-0 bg-[#050505] border border-white/[0.08] overflow-hidden flex flex-col justify-center px-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)] transition-all duration-500 hover:bg-[#080808]">
       
